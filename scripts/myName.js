@@ -4,12 +4,32 @@
 // iedereen: https://fdnd.directus.app/items/person/?fields=id,name,github_handle,avatar&filter={%22squads%22:{%22squad_id%22:{%22name%22:%22Minor%20Web%20Dev%22}}}&sort=name
 
 const baseURL = 'https://fdnd.directus.app/';
-const endpointMe = 'items/person/67';
+const endpointMe = 'items/person/204';
+
+// voeg de basisURL samen met de specifieke link voor een persoon
+const MyURL = baseURL+endpointMe;
+// console.log(MyURL);
 
 
+// haal de data uit de database(link), doe daarna...
+getData(MyURL).then(  IrisData => {
+	console.log(IrisData);
+
+	// set variable myName als de naam uit de database 
+	let myName = IrisData.data.name;
+
+	// selecteer de h1 uit het document
+	let deH1 = document.querySelector("H1");
+
+	// vervang de tekst in de h1 door de tekst in de variable myName
+	deH1.textContent = myName;
 
 
-
+	let MyDate = IrisData.data.birthdate;
+	let Bio = document.querySelector("time");
+	Bio.textContent = MyDate;
+	// console.log(myName);
+}  );
 
 
 

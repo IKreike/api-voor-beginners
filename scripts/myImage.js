@@ -1,5 +1,20 @@
 
+getData(MyURL).then(DataImage =>{
+    console.log(DataImage);
+    let myAvatar = DataImage.data.avatar;
+    console.log(myAvatar);
 
+    let myImg = document.createElement("img");
+    let myName = DataImage.data.name;
+    let mySection = document.querySelector("section:nth-of-type(1)");
+
+    myImg.src= myAvatar;
+    myImg.alt= myName;
+    
+    mySection.appendChild(myImg);
+
+    console.log(myImg);
+});
 
 
 
